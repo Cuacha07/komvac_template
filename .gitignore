@@ -1,0 +1,16 @@
+/node_modules
+/public/hot
+/public/storage
+/public/media-manager
+/public/vendor
+/public/avatar
+/storage/*.key
+/vendor
+/.phpintel
+/.idea
+/.vagrant
+/.vscode
+Homestead.json
+Homestead.yaml
+npm-debug.log
+.env

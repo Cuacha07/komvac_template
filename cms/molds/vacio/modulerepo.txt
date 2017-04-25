@@ -1,0 +1,11 @@
+<?php
+
+namespace Komvac\CMS\Modules\Articles;
+
+use Komvac\CMS\Modules\Lib\BaseRepo;
+
+
+class ArticlesRepo extends BaseRepo
+{
+
+}

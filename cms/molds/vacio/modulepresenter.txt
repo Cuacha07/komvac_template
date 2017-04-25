@@ -1,0 +1,10 @@
+<?php
+
+namespace Komvac\CMS\Modules\Articles;
+
+use Komvac\CMS\Modules\Lib\Presenter;
+
+class ArticlePresenter extends Presenter
+{
+
+}
