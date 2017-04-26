@@ -234,7 +234,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
         //CMS Helper Class
-        'CMSHelper' => App\Helpers\CMSHelpers::class,
+        'CMSHelpers' => App\Helpers\CMSHelpers::class,
     ],
 
 ];

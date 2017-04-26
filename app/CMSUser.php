@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Notifications\ClientesResetPassword;
+use App\Notifications\UserResetPassword;
 
 class CMSUser extends Authenticatable
 {
@@ -47,6 +47,6 @@ class CMSUser extends Authenticatable
     */
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new ClientesResetPassword($token));
+        $this->notify(new UserResetPassword($token, true));
     }
 }

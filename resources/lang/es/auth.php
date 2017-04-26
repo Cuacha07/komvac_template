@@ -16,4 +16,9 @@ return [
     'failed'   => 'Estas credenciales no coinciden con nuestros registros.',
     'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
 
+    //Mail
+    'footer_message1' => 'Si tienes problemas para hacer clic en el botón',
+    'footer_message2' => 'copia y pega la URL a continuación en tu navegador web',
+    'regards' => 'Saludos',
+
 ];

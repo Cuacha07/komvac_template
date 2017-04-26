@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('cms.app_name') }}</title>
+    <title>{{ config('cms.app_name') }} CMS</title>
     <meta id="token" name="csrf-token" content="{{ csrf_token() }}">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
@@ -10,7 +10,7 @@
     @include('cms.inc.header_common')
 
 </head>
-<body class="{{ CMSHelper::cms_body_class() }}">
+<body class="{{ CMSHelpers::cms_body_class() }}">
     <div class="wrapper">
 
         {{-- Header --}}
@@ -23,6 +23,9 @@
         <div class="content-wrapper">
             @yield('content')
         </div><!-- /.content-wrapper -->
+
+        {{-- Footer --}}
+        @include('cms.inc.footer')
 
     </div><!-- ./wrapper -->
 

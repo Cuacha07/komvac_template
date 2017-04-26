@@ -2,9 +2,9 @@
 
 return [
 
-    'login_instructions'    => 'Registrate para empezar tu sesión',
+    'login_instructions'    => 'Inicie sesión para acceder',
     'remember_me'           => 'Recuerdame',
-    'sign_in'               => 'Accede',
+    'sign_in'               => 'Acceder',
     'i_forgot_my_password'  => 'Olvidé mi contraseña',
     'errors_title'          => 'Error, algunos valores no son validos',
     'pass_reset_email_send' => 'Te hemos enviado tu liga para reiniciar tu contraseña!',
@@ -51,4 +51,8 @@ return [
     'toggle-navigation'     => 'Cambiar Navegación',
     'update_my_password'    => 'Actualizar mi Contraseña',
     'users'                 => 'Usuarios',
+    'user_since'            => 'Usuario desde',
+    'search_bar'            => 'Buscar...',
+    'rights_reserved'       => 'Todos los derechos reservados.',
+    'version'               => 'Versión',
 ];

@@ -51,8 +51,8 @@
     border: none;
 }
 
-.search.form-control:hover { border-color: none; }
-.search.form-control:focus { outline: none; }
+.sidebar-form .form-control:hover { border-color: none; }
+.sidebar-form .form-control:focus { outline: none; }
 
 .table-bordered>tbody>tr>td { word-break: break-word;             border-right: none;
         border-left: none; }

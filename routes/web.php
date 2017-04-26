@@ -30,12 +30,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web']], function () {
     Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Cms\Auth\LoginController@logout']);
 
     // Password reset link request routes & Password reset routes
-    Route::get('password/email',         ['as' => 'admin.recover-password', 'uses' => 'Cms\Auth\PasswordController@getEmail']);
-    Route::post('password/email',        ['as' => 'admin.recover-password', 'uses' => 'Cms\Auth\PasswordController@postEmail']);
-    Route::get('password/reset/{token}', ['as' => 'admin.reset-password',   'uses' => 'Cms\Auth\PasswordController@getReset']);
-    Route::post('password/reset',        ['as' => 'admin.reset-password',   'uses' => 'Cms\Auth\PasswordController@postReset']);
+    Route::get('password/email',         ['as' => 'admin.recover-password', 'uses' => 'Cms\Auth\ForgotPasswordController@showLinkRequestForm']);
+    Route::post('password/email',        ['as' => 'admin.recover-password', 'uses' => 'Cms\Auth\ForgotPasswordController@sendResetLinkEmail']);
+    Route::get('password/reset/{token}', ['as' => 'admin.reset-password',   'uses' => 'Cms\Auth\ResetPasswordController@showResetForm']);
+    Route::post('password/reset',        ['as' => 'admin.reset-password',   'uses' => 'Cms\Auth\ResetPasswordController@reset']);
 
-    //User Password Update link
+    //User Password Update link (NO LO EH CHECADO!!!!)
     Route::get('users/update-my-password',   ['as' => 'admin.users.update-my-password', 'uses' => 'Cms\UserController@editMyPassword']);
     //Route::put('users/update-my-password',   ['as' => 'admin.users.update-my-password', 'uses' => 'Cms\UserController@updateMyPassword']);
+
+    //User Module
+    Route::get('users',   ['as' => 'admin.users.index', 'uses' => 'Cms\UserController@index']);
 });

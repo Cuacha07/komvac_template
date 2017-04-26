@@ -16,9 +16,16 @@ class CMSAuthenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard('cms')->check() or Auth::guard('cms')->user()->blocked_at != null) {
-            return redirect('/admin');
+        //Not Logged Users
+        if(!Auth::guard('cms')->check()){
+            return redirect('/admin/login');
         }
+
+        //Blocked CMS Users
+        if(Auth::guard('cms')->user()->blocked_at != null){
+            return redirect('/admin/login');
+        }
+
         return $next($request);
     }
 }

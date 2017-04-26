@@ -2,9 +2,9 @@
 
 return [
 
-    'login_instructions'    =>  'Sign in to start your session',
-    'remember_me'           =>  'Remember Me',
-    'sign_in'               =>  'Sign In',
+    'login_instructions'    => 'Sign in to start your session',
+    'remember_me'           => 'Remember Me',
+    'sign_in'               => 'Sign In',
     'i_forgot_my_password'  => 'I forgot my password',
     'errors_title'          => 'Error, some values may be invalid',
     'pass_reset_email_send' => 'We have e-mailed your password reset link!',
@@ -34,4 +34,8 @@ return [
     'toggle-navigation'     => 'Toggle Navigation',
     'update_my_password'    => 'Update my Password',
     'users'                 => 'Users',
+    'user_since'            => 'User since',
+    'search_bar'            => 'Search...',
+    'rights_reserved'       => 'All rights reserved.',
+    'version'               => 'Version',
 ];

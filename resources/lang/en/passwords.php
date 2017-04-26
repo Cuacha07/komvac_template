@@ -19,4 +19,9 @@ return [
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that e-mail address.",
 
+    //Notification Messages
+    'password_reset' => "Password Reset",
+    'hi' => "Hi!",
+    'message' => "We received a password reset request from your account. Click the button below to reset your password:",
+    'message2' => 'If you did not request a password reset, no further action is required.',
 ];

@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Cms;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class CmsAdminController extends Controller
+class AdminController extends Controller
 {
     public function __construct() 
     {
         $this->middleware('CMSAuthenticate');
     }
 
-    public function index()
+    public function home()
     {
         return view('cms.home');
     }

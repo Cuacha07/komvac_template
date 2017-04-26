@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cms\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordController extends Controller
 {
@@ -34,5 +35,25 @@ class ForgotPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    /**
+    * Display the form to request a password reset link.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function showLinkRequestForm()
+    {
+        return view('cms.auth.password');
+    }
+
+    /**
+    * Get the broker to be used during password reset.
+    *
+    * @return \Illuminate\Contracts\Auth\PasswordBroker
+    */
+    public function broker()
+    {
+        return Password::broker('cms');
     }
 }

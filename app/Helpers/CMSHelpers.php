@@ -56,12 +56,19 @@ class CMSHelpers {
         setlocale(LC_TIME, config('app.locale'));
         $fecha = utf8_encode(Carbon::now()->formatLocalized('%A %d %B %Y'));
         $hora  = Carbon::now()->toTimeString();
-        return ucfirst($fecha) . $hora;
+        return ucfirst($fecha) ." ". $hora;
     }
 
     public static function getUserCount()
     {
         return CMSUser::all()->count();
+    }
+
+    public static function shortDate($date)
+    {
+        setlocale(LC_TIME, config('app.locale'));
+        $fecha = utf8_encode(Carbon::createFromFormat('Y-m-d', substr($date, 0, 10))->formatLocalized('%d %B %Y'));
+        return ucfirst($fecha);
     }
 }
 ?>

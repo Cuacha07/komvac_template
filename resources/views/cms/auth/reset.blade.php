@@ -23,15 +23,15 @@
 
             {!! Form::open(['route' => 'admin.reset-password', 'method' => 'post']) !!}
                 <input type="hidden" name="token" value="{{ $token }}">
-                <div class="form-group has-feedback">
-                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'E-mail']) !!}
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
+                    {!! Form::email('email', $email, ['class' => 'form-control', 'placeholder' => 'E-mail']) !!}
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
-                <div class="form-group has-feedback">
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
                     {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
-                <div class="form-group has-feedback">
+                <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }} has-feedback">
                     {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>

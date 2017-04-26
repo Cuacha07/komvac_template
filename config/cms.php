@@ -2,7 +2,7 @@
 
 return [
 
-    'app_name' => 'Komvac CMS',
+    'app_name' => 'Komvac',
 
     'template_skin' => 'blue', // blue, black, purple, yellow, red, green
 
