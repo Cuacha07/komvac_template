@@ -15,5 +15,5 @@ return [
     'default_path' => 'media-manager',
 
     // Login Background
-    'login_background_url' => '', //../img/cms/back.jpg
+    'login_background_url' => '', //URL goes -> '../img/cms/back.jpg'
 ];
