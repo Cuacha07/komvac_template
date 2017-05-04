@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Cms;
+namespace App\Http\Controllers\CMS;
 
 use Carbon\Carbon;
 use App\CMSUser;
