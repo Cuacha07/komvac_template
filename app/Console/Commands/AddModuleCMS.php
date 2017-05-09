@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Carbon\Carbon;
 use Artisan;
 use File;
 
@@ -39,22 +40,6 @@ class AddModuleCMS extends Command
      */
     public function handle()
     {
-
-
-        $module_names = ['singular' => 'article', 'plural' => 'articles'];
-
-        //index.blade.php
-        $view_name = 'index.blade.php';
-        $sourceDir = base_path()."/App/Helpers/CMSMolds/views/clean";
-        $destinationDir = base_path().'/resources/views/cms/'.strtolower($module_names['plural']);
-
-
-        $this->copyViews($module_names['singular'], $module_names['plural'], $view_name, $sourceDir, $destinationDir);
-
-        dd("Stop");
-
-
-
         $this->info('*********************************');
         $this->info('Add new module to CMS');
         $this->info('*********************************');
@@ -81,6 +66,9 @@ class AddModuleCMS extends Command
             $module_names = $this->nameQuestions();
             $valid_name = $this->confirm('Singluar Name = "'.$module_names['singular'].'" and Plural Name = "'.$module_names['plural'].'". Is this correct? [y|N]');
         }
+
+        //Vendor Directory
+        $vendor_directory = base_path()."/vendor/cuacha07/komvac_template_modules/clean_module";
 /*
         //Controller
         $controller_name = 'CMS/'.$module_names['plural'].'Controller';
@@ -103,8 +91,48 @@ class AddModuleCMS extends Command
         $this->info('Migration created at: database/migrations/'.$migration_name.'.php');
 */
         //Views
+        //index.blade.php
+        $file_name = "index.blade.php"; $final_name = "index.blade.php";
+        $sourceDir = $vendor_directory."/views";
+        $destinationDir = base_path()."/resources/views/cms/".strtolower($module_names['plural']);
+        $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
 
+        //inputs.blade.php
+        $file_name = "inputs.blade.php"; $final_name = "inputs.blade.php";
+        $sourceDir = $vendor_directory."/views/partials";
+        $destinationDir = base_path()."/resources/views/cms/".strtolower($module_names['plural'])."/partials";
+        $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
 
+        //script.blade.php
+        $file_name = "scripts.blade.php"; $final_name = "scripts.blade.php";
+        $sourceDir = $vendor_directory."/views/partials";
+        $destinationDir = base_path()."/resources/views/cms/".strtolower($module_names['plural'])."/partials";
+        $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
+
+        //controller.php
+        $file_name = "controller.php"; $final_name = ucfirst($module_names['plural'])."Controller.php";
+        $sourceDir = $vendor_directory."/controller";
+        $destinationDir = base_path()."/App/Http/Controllers/CMS";
+        $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
+
+        //migration.php
+        $file_name = "migration.php";
+        $final_name = Carbon::now()->format('Y_m_d')."_create_cms_".lcfirst($module_names['plural'])."_table.php";
+        $sourceDir = $vendor_directory."/migration";
+        $destinationDir = base_path()."/database/migrations";
+        $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
+
+        //model.php
+        $file_name = "model.php"; $final_name = "CMS".ucfirst($module_names['singular']).".php";
+        $sourceDir = $vendor_directory."/model";
+        $destinationDir = base_path()."/App/Models/CMS";
+        $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
+
+        //request.php
+        $file_name = "request.php"; $final_name = "CMS".ucfirst($module_names['plural'])."Request.php";
+        $sourceDir = $vendor_directory."/request";
+        $destinationDir = base_path()."/App/Http/Requests/CMS";
+        $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
 
         $this->info('Finished!');
 
@@ -119,12 +147,23 @@ class AddModuleCMS extends Command
         return ['singular' => $singular, 'plural' => $plural];
     }
 
-    protected function copyFiles($singular, $plural, $file_name, $sourceDir, $destinationDir)
+    /**
+     * File copy Function.
+     * ucfirst($plural)      -> 1XlcpX (First Capital Plural Name)
+     * strtolower($plural)   -> 2XpX   (All Lowercase Plural Name)
+     * ucfirst($singular)    -> 3XlcsX (First Capital Singular Name)
+     * strtolower($singular) -> 4XsX   (All Lowercase Singular Name)
+     *
+     * @var array
+     * @var string
+     * @var string
+     * @var string
+     * @var string
+     */
+    protected function copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir)
     {
-        //lcfirst($plural)    -> 1XlcpX (First Capital Plural Name)
-        //$plural             -> 2XpX   (All Lowercase Plural Name)
-        //lcfirst($singular)  -> 3XlcsX (First Capital Singular Name)
-        //$singular           -> 4XsX   (All Lowercase Singular Name)
+        $singular = $module_names['singular'];
+        $plural   = $module_names['plural'];
 
         if(!File::isDirectory($destinationDir)) {
             $result = File::makeDirectory($destinationDir, 0775, true);
@@ -133,15 +172,16 @@ class AddModuleCMS extends Command
         $original_file = $sourceDir."/".$file_name;
 
         $contents = File::get($original_file);
-        $contents = str_replace("1XlcpX", lcfirst($plural), $contents);
-        $contents = str_replace("2XpX", $plural, $contents);
-        $contents = str_replace("3XlcsX", lcfirst($singular), $contents);
-        $contents = str_replace("4XsX", $plural, $contents);
+        $contents = str_replace("1XlcpX", ucfirst($plural), $contents);
+        $contents = str_replace("2XpX", strtolower($plural), $contents);
+        $contents = str_replace("3XlcsX", ucfirst($singular), $contents);
+        $contents = str_replace("4XsX", strtolower($plural), $contents);
 
-        $copied_file = $destinationDir."/".$file_name;
+        $copied_file = $destinationDir."/".$final_name;
         
         File::put($copied_file, $contents);
 
-        $this->info('File '.$file_name.' created at: '.$copied_file);
+        $this->comment('File '.$final_name.' created at: ');
+        $this->info($copied_file);
     }
 }
