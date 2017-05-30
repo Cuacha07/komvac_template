@@ -45,7 +45,7 @@ class AddUserCMS extends Command
         $this->info('Add new user to CMS');
         $this->info('*********************************');
 
-        if ($this->confirm('Do you want to create a new user? [y|N]')) {
+        if ($this->confirm('Continue creating a new user? [y|N]')) {
             while (!$this->createUser()){}
             $this->info('User Added!');
             $this->info('May the Force be with you!');

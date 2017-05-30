@@ -90,6 +90,7 @@ class AddModuleCMS extends Command
         Artisan::call('make:migration', ['name' => $migration_name]);
         $this->info('Migration created at: database/migrations/'.$migration_name.'.php');
 */
+
         //Views
         //index.blade.php
         $file_name = "index.blade.php"; $final_name = "index.blade.php";
@@ -134,6 +135,19 @@ class AddModuleCMS extends Command
         $destinationDir = base_path()."/App/Http/Requests/CMS";
         $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
 
+        //route.php
+        $file_name = "route.php"; $final_name = "CMS".ucfirst($module_names['plural']).".php";
+        $sourceDir = $vendor_directory."/routes";
+        $destinationDir = base_path()."/routes/cms";
+        $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
+
+        //Lateral Side Menu
+        $cms_menu_file = base_path().'/resources/views/cms/inc/items_menu_lateral.blade.php';
+        $route_alias = 'admin.'.strtolower($module_names['plural']).'.index';
+        $make_link_function = "{!! CMSHelpers::makeLinkForSidebarMenu('".$route_alias."', '".ucfirst($module_names['plural'])."', 'fa fa-file-o') !!}\r";
+        $new_menu = File::append($cms_menu_file, $make_link_function);
+        $this->info('Added new module link to Lateral Side Menu.');
+
         $this->info('Finished!');
 
     }
@@ -175,7 +189,7 @@ class AddModuleCMS extends Command
         $contents = str_replace("1XlcpX", ucfirst($plural), $contents);
         $contents = str_replace("2XpX", strtolower($plural), $contents);
         $contents = str_replace("3XlcsX", ucfirst($singular), $contents);
-        $contents = str_replace("4XsX", strtolower($plural), $contents);
+        $contents = str_replace("4XsX", strtolower($singular), $contents);
 
         $copied_file = $destinationDir."/".$final_name;
         
