@@ -3,7 +3,7 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <a href="#">{{ config('cms.app_name') }}</a>
+            <a href="#"><b>{{ config('cms.app_name') }}</b> CMS</a>
         </div><!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">{{ trans('cms.recover-password') }}</p>
