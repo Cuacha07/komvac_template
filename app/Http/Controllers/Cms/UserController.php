@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('CMSAuthenticate');
+    }
+    
     public function index()
     {
         return view('cms.users.index');
