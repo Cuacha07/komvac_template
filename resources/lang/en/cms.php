@@ -38,4 +38,22 @@ return [
     'search_bar'            => 'Search...',
     'rights_reserved'       => 'All rights reserved.',
     'version'               => 'Version',
+    
+    //User Module
+    'update_password'       => 'Update password',
+    'block_user'            => 'Block user',
+    'unblock_user'          => 'Unblock user',
+    'user_blocked'          => 'User blocked',
+    'edit_user'             => 'Edit user',
+    'delete_user'           => 'Delete user',
+    'passowrd_confirmation' => 'Password Confirmation',
+    'create_new_user'       => 'Create new user',
+    'msg_user_created'      => 'User created!',
+    'msg_user_updated'      => 'User updated!',
+    'msg_you_cant_delete_yourself' => 'You can\'t delete yourself!',
+    'msg_password_updated'  => 'Password updated!',
+    'msg_user_blocked'      => 'User blocked!',
+    'msg_user_unblocked'    => 'User unblocked!',
+    'msg_you_cant_block_yourself' => 'You can\'t block yourself!',
+    'msg_user_deleted'      => 'User deleted!'
 ];

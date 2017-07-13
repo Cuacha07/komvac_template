@@ -55,4 +55,22 @@ return [
     'search_bar'            => 'Buscar...',
     'rights_reserved'       => 'Todos los derechos reservados.',
     'version'               => 'Versión',
+
+    //User Module
+    'update_password'       => 'Actualizar contraseña',
+    'block_user'            => 'Bloquear usuario',
+    'unblock_user'          => 'Desbloquear usuario',
+    'user_blocked'          => 'Usuario bloqueado',
+    'edit_user'             => 'Editar usuario',
+    'delete_user'           => 'Borrar usuario',
+    'passowrd_confirmation' => 'Confirmación de contraseña',
+    'create_new_user'       => 'Crear usuario nuevo',
+    'msg_user_created'      => 'Usuario creado!',
+    'msg_user_updated'      => 'Usuario actualizado!',
+    'msg_you_cant_delete_yourself' => 'No puedes borrarte a ti mismo!',
+    'msg_password_updated'  => 'Contraseña actualizada!',
+    'msg_user_blocked'      => 'Usuario bloqueado!',
+    'msg_user_unblocked'    => 'Usuario desbloqueado!',
+    'msg_you_cant_block_yourself' => 'No puedes bloquearte a ti mismo!',
+    'msg_user_deleted'      => 'Usuario borrado!'
 ];
