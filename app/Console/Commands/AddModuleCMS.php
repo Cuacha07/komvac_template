@@ -118,7 +118,7 @@ class AddModuleCMS extends Command
 
         //migration.php
         $file_name = "migration.php";
-        $final_name = Carbon::now()->format('Y_m_d')."_create_cms_".lcfirst($module_names['plural'])."_table.php";
+        $final_name = Carbon::now()->format('Y_m_d_his')."_create_cms_".lcfirst($module_names['plural'])."_table.php";
         $sourceDir = $vendor_directory."/migration";
         $destinationDir = base_path()."/database/migrations";
         $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
