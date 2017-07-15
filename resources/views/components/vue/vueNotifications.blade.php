@@ -1,9 +1,9 @@
 @push('css')
-{!! Html::style('css/iziToast/iziToast.min.css') !!}
+{!! Html::style('plugins/iziToast/iziToast.min.css') !!}
 @endpush
 
 {{-- iziToast (https://github.com/dolce/iziToast) --}}
-{!! Html::script('js/iziToast/iziToast.min.js') !!}
+{!! Html::script('plugins/iziToast/iziToast.min.js') !!}
 
 <script>
 notifications = {

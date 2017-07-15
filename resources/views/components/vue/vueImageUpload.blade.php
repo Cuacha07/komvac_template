@@ -1,4 +1,4 @@
-{{-- Requerimientos: Bootstrap 3, Vue.js 2, vueNotifications.blade.php, Laravel 5.3 --}}
+{{-- Requerimientos: Bootstrap 3, Vue.js 2, vueNotifications.blade.php, Laravel 5.4 --}}
 
 <script>
 Vue.component('imageupload', {
@@ -7,7 +7,7 @@ Vue.component('imageupload', {
     <div>
         <div class="text-left">Tamaño máximo 2 MB</div>
         <div class="text-center" v-show="!renderImage">
-            <img src="http://matchforecaster.com/upload/noimage.jpg" alt="" class="img-responsive">
+            <img :src="public_url+'img/cms/default.jpg'" alt="" class="img-responsive center-block">
             <div class="fileUpload btn btn-primary btn-lg">
                 <span>Subir imagen</span>
                 <input id="file" name="file" type="file" class="upload" @change="onFileChange">
@@ -15,7 +15,7 @@ Vue.component('imageupload', {
         </div>
 
         <div class="text-center" v-show="renderImage">
-            <img :src="renderImage" class="img-responsive"/>
+            <img :src="renderImage" class="img-responsive center-block" style="margin-bottom: 10px;"/>
             <button class="btn btn-primary btn-lg" @click="removeImage">Remover imagen</button>
         </div>
     </div>
@@ -33,7 +33,10 @@ Vue.component('imageupload', {
                 this.renderImage = ''; 
             }
             else {
-                this.renderImage  = this.public_url+value +"?"+Date.now(); //Update cache
+                //console.log(Object.prototype.toString.call(value));
+                if(Object.prototype.toString.call(value) === '[object String]' ) {
+                    this.renderImage  = this.public_url+value +"?"+Date.now(); //Update cache
+                }
             }
         }
     },
@@ -68,11 +71,17 @@ Vue.component('imageupload', {
             for (var i = 0; i < files.length; i++) {
 
                 //Size
-                if (files[i].size > 2097152) { return false } //2 MB
+                if (files[i].size > 2097152) { 
+                    this.notification('fa fa-exclamation-triangle', 'Error', "La imagen es mayor a 2 Mb.", 'topCenter');
+                    return false 
+                } //2 MB
 
                 //Type
                 type = files[i].name.split('.')[files[i].name.split('.').length - 1].toLowerCase()
-                if (_validFileExtensions.indexOf(type) == -1) { return false }
+                if (_validFileExtensions.indexOf(type) == -1) { 
+                    this.notification('fa fa-exclamation-triangle', 'Error', "Extensión de archivo incorrecta. [jpg, jpeg, png]", 'topCenter');
+                    return false 
+                }
 
             } return true
         },

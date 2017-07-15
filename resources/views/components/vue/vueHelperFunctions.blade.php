@@ -1,8 +1,5 @@
 <!-- lodash’s JS -->
-{!! Html::script('js/vue/lodash.min.js') !!}
-
-<!-- EPPZScrollTo -->
-{!! Html::script('js/EPPZScrollTo.js') !!}
+{!! Html::script('plugins/lodash/lodash.min.js') !!}
 
 <script>
 var helperFunctions = {
@@ -32,6 +29,19 @@ var helperFunctions = {
             return f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear();
         },
 
+        //24 Hours to 12 Hours AM PM
+        timeConvert: function (time) {
+            // Check correct time format and split into components
+            time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+            if (time.length > 1) { // If time format correct
+                time = time.slice (1);  // Remove full string match value
+                time[5] = +time[0] < 12 ? ' am' : ' pm'; // Set AM/PM
+                time[0] = +time[0] % 12 || 12; // Adjust hours
+            }
+            return time.join (''); // return adjusted time or original string
+        },
+
         //Format Bytes
         formatBytes: function (bytes, decimals) {
             if(bytes == 0) return '0 Bytes';
@@ -49,7 +59,13 @@ var helperFunctions = {
         },
 
         toTitleCase: function (str) {
+            if(str == null){return;}
             return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        },
+
+        //Form Inputs Error :class="formError(errores, 'password', 'inputError')"
+        formError: function (errors, field, classname) {
+            if(errors) { if(errors[field]) { return classname; } } return '';
         },
 
         //Slug Url

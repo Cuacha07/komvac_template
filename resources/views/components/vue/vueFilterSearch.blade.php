@@ -9,7 +9,7 @@ Vue.component('filtersearch', {
 
             <div class="form-group">
                 <label for="busqueda">Busqueda</label>
-                <input label="Busqueda" name="busqueda" type="text" class="form-control" v-model="busqueda">
+                <input label="Busqueda" name="busqueda" type="text" class="form-control" v-model="busqueda" placeholder="{{trans('cms.search_bar')}}">
             </div>
 
         </div>

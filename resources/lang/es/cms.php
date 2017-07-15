@@ -55,8 +55,18 @@ return [
     'search_bar'            => 'Buscar...',
     'rights_reserved'       => 'Todos los derechos reservados.',
     'version'               => 'Versión',
+    'server_error'          => 'Se ha producido un error.',
+    'update'                => 'Actualizar',
+    'update_user'           => 'Actualizar Usuario',
+
+    //SweetAleert Messages
+    'are_you_sure'          => '¿Estas seguro?',
+    'wont_revert_this'      => 'No podras de revertir esto!',
+    'yes_delete_it'         => 'Si, borralo!',
+    'cancel'                => 'Cancelar',
 
     //User Module
+    'password'              => 'Contraseña',
     'update_password'       => 'Actualizar contraseña',
     'block_user'            => 'Bloquear usuario',
     'unblock_user'          => 'Desbloquear usuario',

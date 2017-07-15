@@ -38,12 +38,23 @@ return [
     'search_bar'            => 'Search...',
     'rights_reserved'       => 'All rights reserved.',
     'version'               => 'Version',
-    
+    'server_error'          => 'An error has occurred.',
+    'update'                => 'Update',
+    'update_user'           => 'Update User',
+
+    //SweetAleert Messages
+    'are_you_sure'          => 'Are you sure?',
+    'wont_revert_this'      => 'You won\'t be able to revert this!',
+    'yes_delete_it'         => 'Yes, delete it!',
+    'cancel'                => 'Cancel',
+
     //User Module
+    'password'              => 'Password',
     'update_password'       => 'Update password',
     'block_user'            => 'Block user',
     'unblock_user'          => 'Unblock user',
     'user_blocked'          => 'User blocked',
+    'update_my_password'    => 'Update my password',
     'edit_user'             => 'Edit user',
     'delete_user'           => 'Delete user',
     'passowrd_confirmation' => 'Password Confirmation',
