@@ -6,9 +6,7 @@
 @include('components.vue.vueFormErrors')
 @include('components.vue.vueImageUpload')
 @include('components.vue.vuePagination')
-@include('components.vue.vueFormErrors')
 @include('components.vue.vueFilterSearch')
-@include('components.vue.vueImageUpload')
 @include('components.vue.vueProgress')
 
 <script>
