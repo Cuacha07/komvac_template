@@ -78,8 +78,8 @@ var app = new Vue ({
         },
 
         updateFilters: function (data) {
-            this.busqueda  = data.busqueda;
-            this.seleccion = data.tipo;
+            this.busqueda = data.busqueda;
+            this.tipo = data.tipo;
             this.getData(this.dataRoute);
         },
 

@@ -19,16 +19,20 @@ Vue.component('fullcalendar', {
             header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,basicWeek,basicDay'
+				right: 'month,agendaWeek,agendaDay,listWeek'
 			},
-            //locale: 'es',
+            locale: 'es',
+            timeFormat: 'HH:mm a',
+            navLinks: true, // can click day/week names to navigate views
+            selectable: true,
+            //defaultView: 'agendaWeek',
             editable: true,
             eventLimit: true,
             droppable : true, // this allows things to be dropped onto the calendar !!!
-            /*dayClick: function() {
+            dayClick: function() {
                 alert('a day has been clicked!');
                 //vm.$emit('input', $(this).val());
-            },*/
+            },
 
             drop: function (date, allDay) { // this function is called when something is dropped
 
