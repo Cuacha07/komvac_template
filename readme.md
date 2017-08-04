@@ -57,11 +57,26 @@ php artisan migrate
 
 **Go to the web browser and put your-domain/admin.**
 
+### Change Remote Git Repo
+**Remove Actual origin Repo Url**
+```
+git remote rm origin
+```
+**Add new one**
+```
+git remote add origin "your new origin repo url"
+```
+
 ### CMS Commands
 
 **Run this command to create blank CMS module.**
 ```
 php artisan cms:createmodule
+```
+
+**Run this command to add new cms user**
+```
+php artisan cms:adduser
 ```
 
 **More Info Soon...**
