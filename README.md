@@ -26,6 +26,11 @@ git remote rm origin
 git remote add origin "your new origin repo url"
 ```
 
+**Git Init**
+```
+git init
+```
+
 **Run Composer Update:**
 
 ```
