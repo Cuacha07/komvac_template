@@ -73,17 +73,17 @@ class AddModuleCMS extends Command
         //Controller
         $controller_name = 'CMS/'.$module_names['plural'].'Controller';
         Artisan::call('make:controller', ['name' => $controller_name]);
-        $this->info('Controller created at: App/Http/Controllers/CMS/'.$controller_name.'.php');
+        $this->info('Controller created at: app/Http/Controllers/CMS/'.$controller_name.'.php');
 
         //Model
         $model_name = 'CMS/'.$module_names['singular'];
         Artisan::call('make:model', ['name' => $model_name]);
-        $this->info('Model created at: App/CMS'.$model_name.'.php');
+        $this->info('Model created at: app/CMS'.$model_name.'.php');
 
         //Request
         $request_name = 'CMS/'.$module_names['singular'].'Request';
         Artisan::call('make:request', ['name' => $request_name]);
-        $this->info('Request created at: App/Http/Requests/CMS/'.$request_name.'.php');
+        $this->info('Request created at: app/Http/Requests/CMS/'.$request_name.'.php');
 
         //Migration
         $migration_name = 'cms_'.strtolower($module_names['plural']);
@@ -113,7 +113,7 @@ class AddModuleCMS extends Command
         //controller.php
         $file_name = "controller.php"; $final_name = ucfirst($module_names['plural'])."Controller.php";
         $sourceDir = $vendor_directory."/controller";
-        $destinationDir = base_path()."/App/Http/Controllers/CMS";
+        $destinationDir = base_path()."/app/Http/Controllers/Cms";
         $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
 
         //migration.php
@@ -126,13 +126,13 @@ class AddModuleCMS extends Command
         //model.php
         $file_name = "model.php"; $final_name = "CMS".ucfirst($module_names['singular']).".php";
         $sourceDir = $vendor_directory."/model";
-        $destinationDir = base_path()."/App/Models/CMS";
+        $destinationDir = base_path()."/app/Models/CMS";
         $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
 
         //request.php
         $file_name = "request.php"; $final_name = "CMS".ucfirst($module_names['plural'])."Request.php";
         $sourceDir = $vendor_directory."/request";
-        $destinationDir = base_path()."/App/Http/Requests/CMS";
+        $destinationDir = base_path()."/app/Http/Requests/CMS";
         $this->copyFiles($module_names, $file_name, $final_name, $sourceDir, $destinationDir);
 
         //route.php
