@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Validator;
 use Hash;
 use App\CMSUser;
+use App\Models\CMS\CMSConfiguration;
 
 class AddUserCMS extends Command
 {
@@ -82,7 +83,23 @@ class AddUserCMS extends Command
         $data['avatar'] = "img/cms/pug.png";
 
         CMSUser::create($data);
+        $this->setConfTable();
 
         return true;
+    }
+
+    protected function setConfTable()
+    {
+        $configuration = CMSConfiguration::first();
+        if ($configuration == null) {
+            // Default Values
+            CMSConfiguration::create([
+                'template_skin' => 'purple',
+                'template_layout_options' => 'fixed',
+                'login_background_url' => 'img/cms/back.jpeg',
+                'correo_contacto' => 'doradopaz@hotmail.com',
+                'front_site_up' => '1'
+            ]);
+        }
     }
 }

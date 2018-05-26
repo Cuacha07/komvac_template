@@ -5,12 +5,19 @@
     <title>{{ config('cms.app_name') }} CMS</title>
     <meta id="token" name="csrf-token" content="{{ csrf_token() }}">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    
+    @php
+        $configuration = CMSHelpers::getConfigurationData();
+
+        // Skin & layout options
+        $class = 'skin-'.$configuration->template_skin.' '.$configuration->template_layout_options;
+    @endphp
 
     {{-- CSS & Stuff --}}
     @include('cms.inc.header_common')
 
 </head>
-<body class="{{ CMSHelpers::cms_body_class() }}">
+<body class="{{$class}}">
     <div class="wrapper">
 
         {{-- Header --}}

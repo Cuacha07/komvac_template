@@ -1,4 +1,4 @@
-.sidebar-menu>li>a {
+/*.sidebar-menu>li>a {
     padding: 12px 5px 12px 15px;
     position: relative;
     z-index: 1;
@@ -40,6 +40,36 @@
 .sidebar-menu .treeview-menu>li>a:hover::before {
     left: -2%;
     width: 102%;
+}*/
+.sidebar-menu > li {
+    -webkit-transition: transform 0.2s ease;
+    -moz-transition: transform 0.2s ease;
+    -o-transition: transform 0.2s ease;
+    -ms-transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-menu > li:hover {
+    -webkit-transform: scale(1.090);
+    -moz-transform: scale(1.090);
+    -o-transform: scale(1.090);
+    -ms-transform: scale(1.090);
+    transform: scale(1.090);
+}
+
+
+.sidebar-menu > li > a {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu > li > a:hover {
+    background-color: #00a65a !important;
+    color: white;
+    z-index: 1500;
 }
 
 .form-control:hover {
@@ -56,8 +86,28 @@
 
 .table-bordered>tbody>tr>td { word-break: break-word;             border-right: none;
         border-left: none; }
+
 .box-body table tbody tr td { vertical-align: middle; }
+
+
+/* Vue Fade Transition */
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+/* Vue Fade Transition */
 
 [v-cloak] {
     display: none;
+}
+
+.slimScrollBar {
+	background-color: white !important;
+	opacity: 0.3 !important;
+}
+
+.main-sidebar .sidebar {
+    overflow-y: scroll;
 }

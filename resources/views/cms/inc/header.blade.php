@@ -1,5 +1,5 @@
 <!-- Main Header -->
-<header class="main-header">
+<header class="main-header" id="headerapp" v-cloak>
     <!-- Logo -->
     <a href="{{ route('admin.home') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -17,6 +17,16 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+
+                {{-- Modo Mantenimiento Notification --}}
+                <li v-show="modo_mantenimiento == '0'" style="background-color: #d33724;">
+                    <a href="{{route('admin.configuraciones.index')}}">Modo Mantenimiento</a>
+                </li>
+
+                {{-- Checar Sitio --}}
+                <li class="dropdown messages-menu" style="background-color: #00c0ef;">
+                    <a href="{{url('/')}}" target="_blank" class="dropdown-toggle"><i class="fa fa-eye"></i> Ver Sitio</a>
+                </li>
 
                 <!-- Messages -->
                 <li class="dropdown messages-menu">
@@ -67,3 +77,33 @@
         </div>
     </nav>
 </header>
+
+@push('scripts')
+<script>
+    var headerapp = new Vue({
+        el: '#headerapp',
+        mounted: function () {
+            var self = this;
+            this.checkModoMantenimiento();
+
+            bus.$on('modo-mantenimiento', function (value) {
+                self.modo_mantenimiento = value;
+            });
+        },
+        data: {
+            loadingMantenimiento: false,
+            modo_mantenimiento: ''
+        },
+        methods: {
+            checkModoMantenimiento: function () {
+                this.loadingMantenimiento = true;
+                var resource = this.$resource("{{route('admin.configuraciones.get_mantenimiento')}}");
+                resource.get({}).then(function (response) {
+                    this.modo_mantenimiento = response.data;
+                    this.loadingMantenimiento = false;
+                });
+            }
+        }
+    });
+</script>
+@endpush

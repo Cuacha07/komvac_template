@@ -1,11 +1,16 @@
 @extends('cms.auth.master')
 
 @section('content')
-    <div class="login-box">
-        <div class="login-logo">
+    <div class="login-box" id="appname" v-cloak>
+
+        <transition name="fade">
+        <div class="login-logo" v-show="appNameAnimate">
             <a href="#"><b>{{ config('cms.app_name') }}</b> CMS</a> 
-        </div><!-- /.login-logo -->
-        <div class="login-box-body">
+        </div>
+        </transition>
+
+        <transition name="fade">
+        <div class="login-box-body" v-show="appNameAnimate2">
             <p class="login-box-msg">{{ trans('cms.login_instructions') }}</p>
 
             {{-- Errors --}}
@@ -47,6 +52,29 @@
 
             <a href="{{ route('admin.recover-password') }}">@lang('cms.i_forgot_my_password')</a><br>
 
-        </div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
+        </div>
+        </transition>
+
+    </div>
 @endsection
+
+@push('scripts')
+<script>
+    var loginapp = new Vue({
+        mounted: function () {
+            window.onload = this.animateAppName();
+        },
+        el: '#appname',
+        data: {
+            appNameAnimate: false,
+            appNameAnimate2: false
+        },
+        methods: {
+            animateAppName: function () {
+                this.appNameAnimate = true;
+                this.appNameAnimate2 = true;
+            }
+        }
+    });
+</script>
+@endpush

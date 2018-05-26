@@ -7,7 +7,7 @@
 
 <!-- AdminLTE CSS -->
 {!! Html::style('plugins/adminLte/AdminLTE.min.css') !!}
-{!! Html::style('plugins/adminLte/skins/skin-'.config('cms.template_skin').'.min.css') !!}
+{!! Html::style('plugins/adminLte/skins/skin-'.$configuration->template_skin.'.min.css') !!}
 
 <!-- SweetAlert2 -->
 {!! Html::style('plugins/sweetalert2/sweetalert2.min.css') !!}

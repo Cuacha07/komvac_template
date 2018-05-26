@@ -17,5 +17,17 @@
 {!! Html::script('plugins/vue/vue.js') !!}
 {!! Html::script('plugins/vue-resource/vue-resource.min.js') !!}
 
+{{-- Vue Bus Component --}}
+<script>var bus = new Vue();</script>
+
+<script>
+    // Add slimscroll
+$('.sidebar').slimScroll({
+    height: ($(window).height() - $('.sidebar').height()) + 'px',
+    color : 'rgba(0,0,0,0.2)',
+    size  : '3px'
+});
+</script>
+
 {{-- Stack Scripts --}}
 @stack('scripts')

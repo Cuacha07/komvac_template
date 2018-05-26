@@ -16,7 +16,7 @@ class CMSAuthenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        //Not Logged Users
+        //Not Logged CMS Users
         if(!Auth::guard('cms')->check()){
             return redirect('/admin/login');
         }

@@ -43,7 +43,11 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
-    {
+    {   
+        if(is_a($exception, 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException') && $request->segment(1) == 'admin') {
+            return response()->view('errors.cms_404', [], 404);
+        }
+
         return parent::render($request, $exception);
     }
 
