@@ -18,7 +18,7 @@ class CheckSiteDown
     {
         if (!$request->is('admin/*') && !$request->is('admin')) {
             $configuration = CMSConfiguration::first();
-            if ($configuration->front_site_up == '0') {
+            if ($configuration != null && $configuration->front_site_up == '0') {
                 return response()->view('errors.503', [], 503);
             }
         }
